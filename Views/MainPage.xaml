@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WeatherApp.ViewModels"
+             x:Class="WeatherApp.Views.MainPage"
+             BackgroundColor="#282C34">
+
+    <ContentPage.BindingContext>
+        <local:WeatherViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20" Spacing="20" HorizontalOptions="Center">
+
+        <Label Text="{Binding WeatherData.Name}"
+               FontSize="32"
+               TextColor="White"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+        <Label Text="{Binding WeatherData.Main.Temp, StringFormat='Temperatura: {0} °C'}"
+               FontSize="24"
+               TextColor="LightBlue"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+        <Entry Placeholder="Digite a cidade"
+               Text="{Binding City}"
+               TextColor="Black"
+               BackgroundColor="White"
+               Margin="0,20"
+               VerticalOptions="Center" />
+
+        <Button Text="Buscar Previsão"
+                Command="{Binding GetWeatherDataCommand}"
+                BackgroundColor="#007ACC"
+            TextColor="White"
+                FontSize="18"
+                Padding="10"
+                CornerRadius="5"
+                VerticalOptions="Center" />
+
+    </StackLayout>
+</ContentPage>
